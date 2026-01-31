@@ -86,17 +86,18 @@ function updateProgress() {
 function finishTest(){
   toggleBtn.textContent="Start 30s Test";
   document.querySelector(".progress-container").style.display="none";
-  timerEl.textContent="Test completed";
+  const elapsed = ((performance.now()-startTime)/1000).toFixed(1);
+  timerEl.textContent=`Test completed in ${elapsed}s`;
 
-  const avg=mean(samples);
-  const jit=calcJitter(samples);
-  let status,cls,interpretation;
+  const avg = mean(samples);
+  const jit = calcJitter(samples);
+  let status, cls, interpretation;
 
-  if(avg<50 && jit<10){
+  if(avg < 50 && jit < 10){
     status="PASS – Endpoint performing well";
     cls="good";
     interpretation="Local computer is likely NOT causing lag";
-  } else if(avg<=100 || jit<=30){
+  } else if(avg <= 100 || jit <= 30){
     status="WARNING – Possible endpoint load";
     cls="warn";
     interpretation="Possible local CPU or app load affecting performance";
@@ -114,6 +115,7 @@ function finishTest(){
 `EdgeScope – Local Machine Performance Test
 ---------------------------------------------
 
+Test Duration   : ${elapsed} s
 Average Latency : ${avg.toFixed(1)} ms
 Jitter          : ${jit.toFixed(1)} ms
 Result          : ${status}
