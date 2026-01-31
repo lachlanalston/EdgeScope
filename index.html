@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeScope – Local Machine Performance Test</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="card">
+  <h1>EdgeScope</h1>
+  <div class="subtitle">
+    Tests whether this computer is causing lag in RDP or WebRTC apps.<br>
+    Does <b>not</b> test network, ISP, or server performance.
+  </div>
+
+  <button id="toggleBtn">Start 30s Test</button>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="label">Avg Latency</div>
+      <div class="value"><span id="latency">–</span> ms</div>
+    </div>
+    <div class="stat">
+      <div class="label">Jitter</div>
+      <div class="value"><span id="jitter">–</span> ms</div>
+    </div>
+  </div>
+
+  <div class="progress-container" style="display:none;">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <div class="timer" id="timer"></div>
+
+  <div id="result" class="result" style="display:none;"></div>
+
+  <textarea id="output" rows="14" readonly style="display:none;"></textarea>
+  <button id="copyBtn" class="secondary" style="display:none;">Copy Results</button>
+
+  <div class="footer">
+    Run this while RDP or real-time apps feel laggy.
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
